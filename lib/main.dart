@@ -12,7 +12,12 @@ class InOutStudy extends StatelessWidget {
     return MaterialApp(
       title: 'INOUT',
       theme: ThemeData(
-        primarySwatch: Colors.cyan,
+        primarySwatch: Colors.indigo,
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.indigo,
+        primaryColor: Colors.indigo,
       ),
       home: const TopSummary(),
     );
