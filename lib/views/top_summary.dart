@@ -5,6 +5,7 @@ class TopSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: Center(
         child: ListView.builder(
           itemCount: 10,
@@ -21,16 +22,32 @@ class TopSummary extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButton: FloatingActionButton(
+        elevation: 10,
         child: const Icon(Icons.add),
         onPressed: () => _newStudyModalBottomSheet(context),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'Menu'),
-          BottomNavigationBarItem(icon: Icon(Icons.more_horiz), label: 'More'),
-        ],
+      bottomNavigationBar: BottomAppBar(
+        elevation: 10,
+        notchMargin: 5,
+        shape: const AutomaticNotchedShape(
+          RoundedRectangleBorder(),
+          StadiumBorder(
+            side: BorderSide(),
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () => {},
+            ),
+            IconButton(
+              icon: const Icon(Icons.more_horiz),
+              onPressed: () => {},
+            ),
+          ],
+        ),
       ),
     );
   }
