@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import './views/top_summary.dart';
 
 void main() {
-  runApp(const InOutStudy());
+  runApp(const ProviderScope(child: InOutStudy()));
 }
 
 class InOutStudy extends StatelessWidget {

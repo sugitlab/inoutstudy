@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class TopSummary extends StatelessWidget {
+import '../models/study_record_provider.dart';
+
+class TopSummary extends HookConsumerWidget {
   const TopSummary({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final records = ref.watch(studyRecordListProvider);
     return Scaffold(
       extendBody: true,
       body: Center(
         child: ListView.builder(
-          itemCount: 10,
+          itemCount: records.length,
           itemBuilder: (BuildContext context, int index) {
             return Container(
               height: 100,
               color: Colors.green.withOpacity(index % 10 / 10),
               child: Center(
-                child: Text('$index', style: const TextStyle(fontSize: 24)),
+                child: Text(records.elementAt(index).toString(), style: const TextStyle(fontSize: 24)),
               ),
             );
           },
