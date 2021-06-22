@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/study_record_provider.dart';
+import '../views/modal_bottom_sheet_form.dart';
 
 class TopSummary extends ConsumerWidget {
   const TopSummary({Key? key}) : super(key: key);
@@ -27,7 +28,7 @@ class TopSummary extends ConsumerWidget {
       floatingActionButton: FloatingActionButton(
         elevation: 10,
         child: const Icon(Icons.add),
-        onPressed: () => _newStudyModalBottomSheet(context),
+        onPressed: () => newStudyModalBottomSheetForm(context),
       ),
       bottomNavigationBar: BottomAppBar(
         elevation: 10,
@@ -54,43 +55,4 @@ class TopSummary extends ConsumerWidget {
       ),
     );
   }
-}
-
-void _newStudyModalBottomSheet(context) {
-  showModalBottomSheet(
-    isScrollControlled: true,
-    context: context,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(10),
-        topRight: Radius.circular(10),
-      ),
-    ),
-    builder: (BuildContext context) {
-      return SafeArea(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          child: Column(
-            children: <Widget>[
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: TextField(
-                  autofocus: true,
-                  decoration: InputDecoration(
-                    border: UnderlineInputBorder(),
-                    hintText: 'New Item',
-                    floatingLabelBehavior: FloatingLabelBehavior.never,
-                  ),
-                ),
-              ),
-              ListTile(
-                leading: const Icon(Icons.calendar_today),
-                onTap: () {},
-              ),
-            ],
-          ),
-        ),
-      );
-    },
-  );
 }
